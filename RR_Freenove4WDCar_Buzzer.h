@@ -16,7 +16,9 @@ private:
 public:
 	RRFreenove4WDCarBuzzer();
 	RRFreenove4WDCarBuzzer(byte pinBuzzer);
-	float getBuzzerVoltage();
+	void on();
+	void off();
+	void beep(unsigned int delaySeconds);
 };
 
 #endif

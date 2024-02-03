@@ -16,10 +16,19 @@ RRFreenove4WDCarBuzzer::RRFreenove4WDCarBuzzer(byte pinBuzzer)
 	_pinBuzzer = pinBuzzer;
 }
 
-float RRFreenove4WDCarBuzzer::getBuzzerVoltage()
+void RRFreenove4WDCarBuzzer::on()
 {
-	pinMode(_pinBuzzer, INPUT);
-	int BuzzerADC = analogRead(_pinBuzzer);
-	float BuzzerVoltage = BuzzerADC / 1023.0 * 5.0 * 4; //V=ADCvalue/1023*5V. 
-	return BuzzerVoltage;
+	pinMode(_pinBuzzer, OUTPUT);
+	digitalWrite(_pinBuzzer, HIGH); // turn on buzzer
+}
+void RRFreenove4WDCarBuzzer::off()
+{
+	digitalWrite(_pinBuzzer, LOW); // turn off buzzer
+}
+void RRFreenove4WDCarBuzzer::beep(unsigned int delaySeconds)
+{
+	pinMode(_pinBuzzer, OUTPUT);
+	digitalWrite(_pinBuzzer, HIGH); // turn on buzzer
+	delay(delaySeconds);
+	digitalWrite(_pinBuzzer, LOW); // turn off buzzer
 }
